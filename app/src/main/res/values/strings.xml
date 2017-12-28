@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">Aesthetic</string>
+    <string name="no_network_string">Network Connection Unavailable</string>
+</resources>

@@ -1,5 +1,6 @@
 package com.abhinav.asthetic.base
 
+import com.abhinav.asthetic.utils.FailureResponse
 import java.lang.ref.SoftReference
 
 /**
@@ -27,5 +28,9 @@ abstract class BasePresenter<T : BaseView> : BaseModelListener {
 
     override fun noNetworkError() {
         getView()?.let { it.showNoNetworkError() }
+    }
+
+    override fun commonError(failureResponse: FailureResponse) {
+        getView()?.let { it.showError(failureResponse) }
     }
 }

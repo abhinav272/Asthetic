@@ -9,6 +9,8 @@ import java.net.UnknownHostException
 
 /**
  * Created by abhinav.sharma on 28/12/17.
+ * Can be used this with Retrofit if RestAPI
+ * @return retrofit2.Call<T>
  */
 abstract class NetworkResponse<T>(private var handler: NoNetworkHandler) : Callback<T> {
     abstract fun onSuccess(body: T?)

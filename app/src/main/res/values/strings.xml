@@ -1,4 +1,10 @@
 <resources>
     <string name="app_name">Aesthetic</string>
     <string name="no_network_string">Network Connection Unavailable</string>
+    <string name="common_error">Something went wrong!!</string>
+    <string name="error_403">Incorrect API Key</string>
+    <string name="error_404">Results not found</string>
+    <string name="error_429">Too many requests/ngive some time</string>
+    <string name="error_500">Something went wrong at Server</string>
+    <string name="error_503">Server overloaded with requests</string>
 </resources>

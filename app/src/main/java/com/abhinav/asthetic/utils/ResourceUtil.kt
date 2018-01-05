@@ -7,7 +7,7 @@ import com.abhinav.asthetic.Aesthetic
 /**
  * Created by abhinav.sharma on 28/12/17.
  */
-object ResourcesUtil {
+object ResourceUtil {
     private val context = Aesthetic.instance
     private val theme = Aesthetic.instance.theme
 

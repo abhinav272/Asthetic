@@ -7,10 +7,10 @@ import com.abhinav.asthetic.ui.ShowCollectionFragment
 import kotlinx.android.synthetic.main.activity_on_board.*
 
 class OnBoardActivity : BaseActivity() {
+    override fun getResourceId(): Int = R.layout.activity_on_board
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_on_board)
         addFragment(ShowCollectionFragment(), R.id.frame_container, "test")
     }
 }

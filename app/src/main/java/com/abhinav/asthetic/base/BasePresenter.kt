@@ -22,7 +22,7 @@ abstract class BasePresenter<T : BaseView> : BaseModelListener {
 
     abstract fun setModel()
 
-    fun destroy() {
+    open fun destroy() {
         view = null
     }
 

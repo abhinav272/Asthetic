@@ -19,6 +19,11 @@ class ShowCollectionPresenter(view: ShowCollectionView) : BasePresenter<ShowColl
         model.fetchCollections(page)
     }
 
+    override fun destroy() {
+        super.destroy()
+        model.destroy()
+    }
+
     override fun setModel() {
         model = ShowCollectionModel(this)
     }

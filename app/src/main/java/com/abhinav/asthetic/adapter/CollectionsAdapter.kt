@@ -12,12 +12,6 @@ import com.abhinav.asthetic.utils.inflate
  */
 class CollectionsAdapter(private val listener: (Collection) -> Unit, private var collectionsList: List<Collection>) : RecyclerView.Adapter<CollectionsViewHolder>() {
 
-//    init {
-//        collectionsList.forEach {
-//            it.height = (400..800).random()
-//        }
-//    }
-
     override fun getItemCount(): Int = collectionsList.size
 
     private fun getItem(position: Int): Collection = collectionsList[position]

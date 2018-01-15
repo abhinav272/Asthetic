@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="280dp"
+    android:layout_height="300dp"
     android:layout_margin="10dp"
     app:cardCornerRadius="@dimen/cardview_default_radius"
     app:cardElevation="@dimen/cardview_default_elevation">
@@ -25,14 +25,24 @@
 
 
         <TextView
-            android:id="@+id/tv_collection_name"
+            android:id="@+id/tv_collection_label"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
+            android:layout_marginStart="20dp"
             android:layout_marginTop="10dp"
+            android:textSize="20sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/iv_collection_1"
             tools:text="Hello" />
+
+        <ImageView
+            android:id="@+id/iv_owner"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="22dp"
+            android:layout_marginTop="10dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_collection_label" />
 
     </android.support.constraint.ConstraintLayout>
 

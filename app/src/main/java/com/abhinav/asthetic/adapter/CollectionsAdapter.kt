@@ -6,18 +6,17 @@ import com.abhinav.asthetic.R
 import com.abhinav.asthetic.adapter.viewholder.CollectionsViewHolder
 import com.abhinav.asthetic.network.pojo.Collection
 import com.abhinav.asthetic.utils.inflate
-import com.abhinav.asthetic.utils.random
 
 /**
  * Created by abhinav.sharma on 08/01/18.
  */
 class CollectionsAdapter(private val listener: (Collection) -> Unit, private var collectionsList: List<Collection>) : RecyclerView.Adapter<CollectionsViewHolder>() {
 
-    init {
-        collectionsList.forEach {
-            it.height = (400..800).random()
-        }
-    }
+//    init {
+//        collectionsList.forEach {
+//            it.height = (400..800).random()
+//        }
+//    }
 
     override fun getItemCount(): Int = collectionsList.size
 

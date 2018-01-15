@@ -16,9 +16,8 @@ class CollectionsAdapter(private val listener: (Collection) -> Unit, private var
 
     private fun getItem(position: Int): Collection = collectionsList[position]
 
-    override fun onBindViewHolder(holder: CollectionsViewHolder, position: Int) {
-        holder.bind(getItem(position), listener)
-    }
+    override fun onBindViewHolder(holder: CollectionsViewHolder, position: Int) =
+            holder.bind(getItem(position), listener)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CollectionsViewHolder =
             CollectionsViewHolder(parent.inflate(R.layout.layout_collection_single_item))

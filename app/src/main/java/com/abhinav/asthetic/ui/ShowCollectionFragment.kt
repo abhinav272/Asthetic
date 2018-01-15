@@ -1,6 +1,7 @@
 package com.abhinav.asthetic.ui
 
 import android.os.Bundle
+import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.StaggeredGridLayoutManager
 import android.util.Log
 import android.view.LayoutInflater
@@ -40,7 +41,7 @@ class ShowCollectionFragment : BaseFragment(), ShowCollectionView, (Collection) 
 
     override fun populateCollections(collections: List<Collection>) {
         Toast.makeText(activity, "hello", Toast.LENGTH_SHORT).show()
-        rv_collections.layoutManager = StaggeredGridLayoutManager(2, 1)
+        rv_collections.layoutManager = LinearLayoutManager(context)
         rv_collections.adapter = CollectionsAdapter(this, collections)
     }
 

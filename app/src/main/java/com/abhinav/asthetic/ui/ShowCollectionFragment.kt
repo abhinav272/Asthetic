@@ -33,10 +33,7 @@ class ShowCollectionFragment : BaseFragment(), ShowCollectionView, (Collection) 
 
     override fun onViewCreated(view: View?, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        button.setOnClickListener {
-            presenter.initView()
-        }
-
+        presenter.initView()
     }
 
     override fun populateCollections(collections: List<Collection>) {

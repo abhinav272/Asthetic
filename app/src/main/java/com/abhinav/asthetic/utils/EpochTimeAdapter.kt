@@ -23,7 +23,7 @@ class EpochTimeAdapter private constructor() : TypeAdapter<Date>() {
         if (value == null) {
             out.nullValue()
         } else {
-            out.value(value.time)
+            out.value(value.time/1000)
         }
     }
 

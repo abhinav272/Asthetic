@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#3F51B5</color>
-    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorPrimary">@color/colorGunmetal</color>
+    <color name="colorPrimaryDark">#242627</color>
     <color name="colorAccent">#FF4081</color>
+    <color name="colorGunmetal">#2D3031</color>
+    <color name="colorSlateGrey">#77828A</color>
+    <color name="colorWhiteSmoke">#F3F3F3</color>
+    <color name="colorCatSkillWhite">#DFE1DE</color>
+    <color name="colorNobelGrey">#A0A0A0</color>
+    <color name="colorLightGrey">#D1D1D1</color>
 </resources>

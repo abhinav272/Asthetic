@@ -5,8 +5,9 @@
     android:layout_width="match_parent"
     android:layout_height="300dp"
     android:layout_margin="10dp"
-    app:cardCornerRadius="@dimen/cardview_default_radius"
-    app:cardElevation="@dimen/cardview_default_elevation">
+    app:cardBackgroundColor="@color/colorGunmetal"
+    app:cardCornerRadius="10dp"
+    app:cardElevation="5dp">
 
     <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
@@ -16,9 +17,10 @@
             android:id="@+id/iv_collection_1"
             android:layout_width="0dp"
             android:layout_height="180dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
             android:scaleType="centerCrop"
-            app:layout_constraintDimensionRatio="W,16:9"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -30,6 +32,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
             android:layout_marginTop="10dp"
+            android:textColor="@color/colorWhiteSmoke"
             android:textSize="20sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/iv_collection_1"
@@ -48,10 +51,37 @@
             android:id="@+id/tv_owner_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
             android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:textColor="@color/colorCatSkillWhite"
+            android:textSize="16sp"
+            app:layout_constraintStart_toEndOf="@id/iv_owner"
             app:layout_constraintTop_toBottomOf="@id/tv_collection_label"
-            app:layout_constraintStart_toEndOf="@id/iv_owner" />
+            tools:text="Abhinav" />
+
+        <TextView
+            android:id="@+id/tv_collection_items"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:layout_marginTop="12dp"
+            android:textColor="@color/colorLightGrey"
+            android:textSize="14sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_collection_label"
+            tools:text="13 items" />
+
+        <TextView
+            android:id="@+id/tv_collection_last_updated"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="10dp"
+            android:layout_marginTop="8dp"
+            android:textColor="@color/colorLightGrey"
+            android:textSize="14sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_collection_items"
+            tools:text="Last Updated: 20 Aug 2019" />
 
     </android.support.constraint.ConstraintLayout>
 

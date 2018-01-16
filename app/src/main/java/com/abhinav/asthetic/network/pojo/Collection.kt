@@ -2,6 +2,7 @@ package com.abhinav.asthetic.network.pojo
 
 import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName
+import java.util.*
 
 
 /**
@@ -36,7 +37,7 @@ class Collection {
     var data: String? = null
     @SerializedName("created_on")
     @Expose
-    var createdOn: Int = 0
+    var createdOn: Date? = null
     @SerializedName("updated_on")
     @Expose
     var updatedOn: Int = 0

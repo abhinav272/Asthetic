@@ -2,6 +2,8 @@ package com.abhinav.asthetic.network
 
 import com.abhinav.asthetic.BuildConfig
 import com.abhinav.asthetic.network.response.CollectionsResponse
+import com.abhinav.asthetic.utils.EpochTimeAdapter
+import com.google.gson.GsonBuilder
 import io.reactivex.Observable
 import io.reactivex.Single
 import okhttp3.OkHttpClient
@@ -13,6 +15,8 @@ import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.GET
 import retrofit2.http.Query
 import retrofit2.http.Streaming
+import java.text.DateFormat
+import java.util.*
 
 
 /**
@@ -25,7 +29,7 @@ interface APIInterface {
         fun getAPIService(): APIInterface {
             return Retrofit.Builder()
                     .baseUrl(BEHANCE_BASE_URL)
-                    .addConverterFactory(GsonConverterFactory.create())
+                    .addConverterFactory(getGsonConverterFactory())
                     .addCallAdapterFactory(RxJava2CallAdapterFactory.createAsync())
                     .client(getClient())
                     .build()
@@ -57,6 +61,11 @@ interface APIInterface {
                         chain.proceed(request)
                     }
             return httpClient.build()
+        }
+
+        private fun getGsonConverterFactory(): GsonConverterFactory {
+            val gson = GsonBuilder().registerTypeAdapter(Date::class.java, EpochTimeAdapter.epochTimeAdapter).create()
+            return GsonConverterFactory.create(gson)
         }
     }
 

@@ -2,21 +2,11 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
-
-
-    <Button
-        android:id="@+id/button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:text="BaseCollections" />
+    android:background="@color/colorNobelGrey">
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/rv_collections"
         android:scrollbars="none"
-        app:layoutManager=""
-        android:layout_below="@+id/button"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 </RelativeLayout>

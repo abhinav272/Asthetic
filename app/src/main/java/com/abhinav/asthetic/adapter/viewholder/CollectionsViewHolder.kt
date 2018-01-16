@@ -56,7 +56,7 @@ class CollectionsViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) 
         if (collection.owners!!.isNotEmpty()) {
             when {
                 !collection.owners!![0].images!!.fullImage.isNullOrBlank() ->
-                    iv_owner.loadCircular(collection.owners?.get(0)?.images?.fullImage!!) { requestCreator ->
+                    iv_owner.loadRoundedCorner(collection.owners?.get(0)?.images?.fullImage!!) { requestCreator ->
                         requestCreator.fit().centerCrop()
                     }
 

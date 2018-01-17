@@ -1,6 +1,8 @@
 package com.abhinav.asthetic.utils
 
 import android.content.Context
+import android.support.v7.widget.LinearLayoutManager
+import android.support.v7.widget.RecyclerView
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -10,6 +12,7 @@ import com.abhinav.asthetic.utils.picasso_utils.CropCircleTransformation
 import com.abhinav.asthetic.utils.picasso_utils.RoundedCornersTransformation
 import com.squareup.picasso.Picasso
 import com.squareup.picasso.RequestCreator
+import java.text.SimpleDateFormat
 import java.util.*
 
 /**
@@ -37,3 +40,5 @@ fun ImageView.loadCircular(path: String, request: (RequestCreator) -> RequestCre
 
 fun ClosedRange<Int>.random() =
         Random().nextInt(endInclusive - start) + start
+
+fun Date.getFormatedDate(): String = SimpleDateFormat("EEE, MMM d, ''yy", Locale.getDefault()).format(this)

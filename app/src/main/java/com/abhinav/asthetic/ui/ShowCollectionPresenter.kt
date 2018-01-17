@@ -28,9 +28,12 @@ class ShowCollectionPresenter(view: ShowCollectionView) : BasePresenter<ShowColl
         model = ShowCollectionModel(this)
     }
 
-    private fun loadMoreCollections() {
-        page++
-        model.fetchCollections(page)
+    fun loadMoreCollections() {
+        getView()?.let {
+            it.showFooterLoader()
+            page++
+            model.fetchCollections(page)
+        }
     }
 
     override fun onCollectionsLoaded(collections: List<Collection>?) {

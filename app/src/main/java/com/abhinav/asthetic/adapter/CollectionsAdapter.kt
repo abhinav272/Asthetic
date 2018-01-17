@@ -10,7 +10,7 @@ import com.abhinav.asthetic.utils.inflate
 /**
  * Created by abhinav.sharma on 08/01/18.
  */
-class CollectionsAdapter(private val listener: (Collection) -> Unit, private var collectionsList: List<Collection>) : RecyclerView.Adapter<CollectionsViewHolder>() {
+class CollectionsAdapter(private val listener: (Collection) -> Unit, private var collectionsList: ArrayList<Collection>) : RecyclerView.Adapter<CollectionsViewHolder>() {
 
     override fun getItemCount(): Int = collectionsList.size
 
@@ -21,5 +21,10 @@ class CollectionsAdapter(private val listener: (Collection) -> Unit, private var
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CollectionsViewHolder =
             CollectionsViewHolder(parent.inflate(R.layout.layout_collection_single_item))
+
+    fun updateDataSet(collections: List<Collection>) {
+        collectionsList.addAll(collections)
+        notifyDataSetChanged()
+    }
 }
 

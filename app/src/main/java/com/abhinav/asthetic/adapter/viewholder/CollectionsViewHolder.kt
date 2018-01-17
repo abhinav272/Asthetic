@@ -3,6 +3,7 @@ package com.abhinav.asthetic.adapter.viewholder
 import android.support.v7.widget.RecyclerView
 import android.view.View
 import com.abhinav.asthetic.network.pojo.Collection
+import com.abhinav.asthetic.utils.getFormatedDate
 import com.abhinav.asthetic.utils.load
 import com.abhinav.asthetic.utils.loadRoundedCorner
 import kotlinx.android.synthetic.main.layout_collection_single_item.view.*
@@ -13,7 +14,6 @@ import kotlinx.android.synthetic.main.layout_collection_single_item.view.*
 class CollectionsViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
     fun bind(collection: Collection, listener: (Collection) -> Unit) = with(itemView) {
-        //        iv_collection.layoutParams.height = collection.height
 
         if (collection.projectCovers != null && !collection.projectCovers!!.isEmpty()) {
             iv_collection_1.load(collection.projectCovers!![0].url!!) { requestCreator ->
@@ -21,36 +21,17 @@ class CollectionsViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) 
             }
 
             tv_collection_label.text = collection.title
-            tv_collection_items.text = collection.stats?.items.toString()
-            tv_collection_last_updated.text = collection.createdOn.toString()
-//
-//            if (collection.projectCovers!!.size > 1)
-//                iv_collection_2.load(collection.projectCovers!![1].url!!) { requestCreator ->
-//                    requestCreator.fit().centerCrop()
-//                }
-//
-//            if (collection.projectCovers!!.size > 2)
-//                iv_collection_3.load(collection.projectCovers!![2].url!!) { requestCreator ->
-//                    requestCreator.fit().centerCrop()
-//                }
-//
-//            if (collection.projectCovers!!.size > 3)
-//                iv_collection_4.load(collection.projectCovers!![3].url!!) { requestCreator ->
-//                    requestCreator.fit().centerCrop()
-//                }
-//            Observable.interval(2, TimeUnit.SECONDS)
-//                    .repeat()
-//                    .observeOn(AndroidSchedulers.mainThread())
-//                    .subscribe { t: Long? ->
-//                        if (collection.projectCovers!!.size > t!!) {
-//                            iv_collection.load(collection.projectCovers!![t.toInt()].url!!) { requestCreator ->
-//                                requestCreator.fit().centerCrop()
-//                            }
-//                        }
-//                    }
+            tv_collection_items.text = collection.stats?.let {
+                "Items: " + it.items
+            }
+            tv_collection_last_updated.text = collection.createdOn?.getFormatedDate()
         }
 
-        tv_owner_name.text = collection.owners?.get(0)?.displayName
+        if (collection.owners?.isNotEmpty()!! && !collection.owners!![0].displayName.isNullOrBlank()) {
+            tv_owner_name.text = collection.owners?.get(0)?.displayName
+        } else {
+            tv_owner_name.text = collection.owners?.get(0)?.username + "-username"
+        }
         if (collection.owners!!.isNotEmpty()) {
             when {
                 !collection.owners!![0].images!!.fullImage.isNullOrBlank() ->
@@ -80,5 +61,7 @@ class CollectionsViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) 
                     }
             }
         }
+
+        itemView.setOnClickListener { listener(collection) }
     }
 }

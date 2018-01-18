@@ -23,7 +23,7 @@ class ShowCollectionFragment : BaseFragment(), ShowCollectionView, (Collection) 
     private var collections: ArrayList<Collection> = ArrayList()
 
     override fun invoke(p1: Collection) {
-        Log.e("click on", "${p1.title}")
+        
     }
 
     private lateinit var presenter: ShowCollectionPresenter
@@ -57,7 +57,7 @@ class ShowCollectionFragment : BaseFragment(), ShowCollectionView, (Collection) 
     }
 
     override fun showFooterLoader() {
-        Log.e("show", "footer")
+        showLoadMoreView()
     }
 
     override fun hideFooterLoader() {

@@ -2,6 +2,7 @@ package com.abhinav.asthetic.ui
 
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
+import android.support.v7.widget.RecyclerView
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -11,9 +12,8 @@ import com.abhinav.asthetic.R
 import com.abhinav.asthetic.adapter.CollectionsAdapter
 import com.abhinav.asthetic.base.BaseFragment
 import com.abhinav.asthetic.network.pojo.Collection
-import kotlinx.android.synthetic.main.fragment_collection.*
 import com.abhinav.asthetic.utils.recyclerview_utils.LinearInfiniteScrollListner
-import android.support.v7.widget.RecyclerView
+import kotlinx.android.synthetic.main.fragment_collection.*
 
 /**
  * Created by abhinav.sharma on 30/12/17.
@@ -57,7 +57,7 @@ class ShowCollectionFragment : BaseFragment(), ShowCollectionView, (Collection) 
     }
 
     override fun showFooterLoader() {
-        showLoadMoreView()
+//        showLoadMoreView()
     }
 
     override fun hideFooterLoader() {

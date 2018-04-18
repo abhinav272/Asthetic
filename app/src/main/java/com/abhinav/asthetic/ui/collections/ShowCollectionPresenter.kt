@@ -2,6 +2,7 @@ package com.abhinav.asthetic.ui
 
 import com.abhinav.asthetic.base.BasePresenter
 import com.abhinav.asthetic.network.pojo.Collection
+import com.abhinav.asthetic.utils.FailureResponse
 
 /**
  * Created by abhinav.sharma on 04/01/18.
@@ -41,10 +42,5 @@ class ShowCollectionPresenter(view: ShowCollectionView) : BasePresenter<ShowColl
         collections?.let {
             getView()?.populateCollections(it)
         }
-
-    }
-
-    override fun onErrorOccurred(t: Throwable?) {
-
     }
 }

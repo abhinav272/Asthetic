@@ -8,5 +8,4 @@ import com.abhinav.asthetic.network.pojo.Collection
  */
 interface ShowCollectionModelListener: BaseModelListener {
     fun onCollectionsLoaded(collections: List<Collection>?)
-    fun onErrorOccurred(t: Throwable?)
 }

@@ -1,7 +1,9 @@
 package com.abhinav.asthetic.network
 
 import com.abhinav.asthetic.BuildConfig
+import com.abhinav.asthetic.network.pojo.LatestProject
 import com.abhinav.asthetic.network.response.CollectionsResponse
+import com.abhinav.asthetic.network.response.ProjectListResponse
 import com.abhinav.asthetic.utils.EpochTimeAdapter
 import com.google.gson.GsonBuilder
 import io.reactivex.Observable
@@ -13,9 +15,9 @@ import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.GET
+import retrofit2.http.Path
 import retrofit2.http.Query
 import retrofit2.http.Streaming
-import java.text.DateFormat
 import java.util.*
 
 
@@ -75,5 +77,8 @@ interface APIInterface {
 
     @GET("/v2/collections")
     fun getCollectionsByQuery(@Query("q") query: String, @Query("page") page: Int): Call<Single<CollectionsResponse>>
+
+    @GET("/v2/collections/{collectionId}/projects")
+    fun getAllProjectsByCollectionId(@Path("collectionId") collectionId: Int): Observable<ProjectListResponse>
 
 }

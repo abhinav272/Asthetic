@@ -11,6 +11,7 @@ class ShowCollectionItemDetailsPresenter(view: ShowCollectionItemDetailsView) : 
 
     private lateinit var model: ShowCollectionItemDetailsModel
     private lateinit var collectionBase: Collection
+    private lateinit var allProjects: List<LatestProject>
 
     init {
         setModel()
@@ -18,7 +19,13 @@ class ShowCollectionItemDetailsPresenter(view: ShowCollectionItemDetailsView) : 
 
     override fun initView() {
         collectionBase = getView()?.getCollectionBaseFromHost()!!
+        if (collectionBase.latestProjects != null)
+            allProjects = collectionBase.latestProjects!!
+
         getView()?.showCollectionDetails(collectionBase)
+        getView()?.populateProjectList(allProjects)
+
+        model.fetchProjectListByCollectionId(collectionBase.id)
     }
     override fun setModel() {
         model = ShowCollectionItemDetailsModel(this)

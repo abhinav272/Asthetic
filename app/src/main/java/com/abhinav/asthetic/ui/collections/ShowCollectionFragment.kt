@@ -10,8 +10,10 @@ import android.view.ViewGroup
 import android.view.animation.AnimationUtils
 import com.abhinav.asthetic.R
 import com.abhinav.asthetic.adapter.CollectionsAdapter
+import com.abhinav.asthetic.base.BaseActivity
 import com.abhinav.asthetic.base.BaseFragment
 import com.abhinav.asthetic.network.pojo.Collection
+import com.abhinav.asthetic.ui.collections.ShowCollectionItemDetailsFragment
 import com.abhinav.asthetic.utils.recyclerview_utils.LinearInfiniteScrollListner
 import kotlinx.android.synthetic.main.fragment_collection.*
 
@@ -24,7 +26,7 @@ class ShowCollectionFragment : BaseFragment(), ShowCollectionView, (Collection) 
     private lateinit var presenter: ShowCollectionPresenter
 
     override fun invoke(p1: Collection) {
-        
+
     }
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {

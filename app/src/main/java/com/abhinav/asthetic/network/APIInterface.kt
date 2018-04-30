@@ -1,7 +1,6 @@
 package com.abhinav.asthetic.network
 
 import com.abhinav.asthetic.BuildConfig
-import com.abhinav.asthetic.network.pojo.LatestProject
 import com.abhinav.asthetic.network.response.CollectionsResponse
 import com.abhinav.asthetic.network.response.ProjectListResponse
 import com.abhinav.asthetic.utils.EpochTimeAdapter
@@ -19,6 +18,7 @@ import retrofit2.http.Path
 import retrofit2.http.Query
 import retrofit2.http.Streaming
 import java.util.*
+import java.util.concurrent.TimeUnit
 
 
 /**
@@ -62,6 +62,9 @@ interface APIInterface {
                         val request = requestBuilder.build()
                         chain.proceed(request)
                     }
+                    .readTimeout(60, TimeUnit.SECONDS)
+                    .connectTimeout(60, TimeUnit.SECONDS)
+                    .writeTimeout(30, TimeUnit.SECONDS)
             return httpClient.build()
         }
 

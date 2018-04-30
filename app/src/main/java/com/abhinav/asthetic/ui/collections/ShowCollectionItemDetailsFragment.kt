@@ -1,6 +1,9 @@
 package com.abhinav.asthetic.ui.collections
 
+import android.content.Context
 import android.os.Bundle
+import android.support.v7.widget.GridLayoutManager
+import android.support.v7.widget.LinearLayoutManager
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -10,6 +13,7 @@ import com.abhinav.asthetic.adapter.ProjectsAdapter
 import com.abhinav.asthetic.base.BaseFragment
 import com.abhinav.asthetic.network.pojo.Collection
 import com.abhinav.asthetic.network.pojo.LatestProject
+import kotlinx.android.synthetic.main.fragment_collection_details.*
 
 /**
  * Created by appinventiv on 19/4/18.
@@ -18,12 +22,16 @@ class ShowCollectionItemDetailsFragment : BaseFragment(), ShowCollectionItemDeta
 
     private lateinit var presenter: ShowCollectionItemDetailsPresenter
     private lateinit var adapter: ProjectsAdapter
-    var host: CollectionItemDetailHost? = null
+    private lateinit var host: CollectionItemDetailHost
 
-    override fun getCollectionBaseFromHost(): Collection {
-        if (host == null)
-            throw IllegalStateException("Host must implement CollectionItemDetailHost")
-        return host!!.getCollection()
+    override fun getCollectionBaseFromHost(): Collection = host.getCollection()
+
+    override fun onAttach(context: Context?) {
+        super.onAttach(context)
+        context?.let {
+            if (context is CollectionItemDetailHost) host = context
+            else throw IllegalStateException("Host must implement CollectionItemDetailHost")
+        }
     }
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
@@ -35,17 +43,22 @@ class ShowCollectionItemDetailsFragment : BaseFragment(), ShowCollectionItemDeta
     override fun onViewCreated(view: View?, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initViews()
+        presenter.initView()
     }
 
     private fun initViews() {
         adapter = ProjectsAdapter(this)
+        rv_projects.adapter = adapter
+        rv_projects.layoutManager = GridLayoutManager(context, 2)
     }
 
     override fun showCollectionDetails(collection: Collection) {
+        Log.e("yo ShowCollectionBase", collection.title + collection.latestProjects?.size)
         collection.latestProjects?.let { adapter.rePopulateProjects(it) }
     }
 
     override fun populateProjectList(projectList: List<LatestProject>) {
+        Log.e("yo PopulateList", ""+projectList.size)
         adapter.populateProjects(projectList)
     }
 

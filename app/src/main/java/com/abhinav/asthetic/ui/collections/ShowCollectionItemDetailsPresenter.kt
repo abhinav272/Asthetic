@@ -23,7 +23,6 @@ class ShowCollectionItemDetailsPresenter(view: ShowCollectionItemDetailsView) : 
             allProjects = collectionBase.latestProjects!!
 
         getView()?.showCollectionDetails(collectionBase)
-        getView()?.populateProjectList(allProjects)
 
         model.fetchProjectListByCollectionId(collectionBase.id)
     }

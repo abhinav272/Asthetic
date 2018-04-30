@@ -1,5 +1,6 @@
 package com.abhinav.asthetic.ui
 
+import android.content.Context
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
@@ -10,10 +11,9 @@ import android.view.ViewGroup
 import android.view.animation.AnimationUtils
 import com.abhinav.asthetic.R
 import com.abhinav.asthetic.adapter.CollectionsAdapter
-import com.abhinav.asthetic.base.BaseActivity
 import com.abhinav.asthetic.base.BaseFragment
 import com.abhinav.asthetic.network.pojo.Collection
-import com.abhinav.asthetic.ui.collections.ShowCollectionItemDetailsFragment
+import com.abhinav.asthetic.ui.collections.CollectionDetailHost
 import com.abhinav.asthetic.utils.recyclerview_utils.LinearInfiniteScrollListner
 import kotlinx.android.synthetic.main.fragment_collection.*
 
@@ -24,9 +24,18 @@ class ShowCollectionFragment : BaseFragment(), ShowCollectionView, (Collection) 
 
     private var collections: ArrayList<Collection> = ArrayList()
     private lateinit var presenter: ShowCollectionPresenter
+    private lateinit var host: CollectionDetailHost
 
     override fun invoke(p1: Collection) {
+        host.onCollectionSelected(p1)
+    }
 
+    override fun onAttach(context: Context?) {
+        super.onAttach(context)
+        context?.let {
+            if (context is CollectionDetailHost) host = context
+            else throw IllegalStateException("Host must implement CollectionDetailHost")
+        }
     }
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {

@@ -3,7 +3,6 @@ package com.abhinav.asthetic.ui.collections
 import android.content.Context
 import android.os.Bundle
 import android.support.v7.widget.GridLayoutManager
-import android.support.v7.widget.LinearLayoutManager
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -26,6 +25,9 @@ class ShowCollectionItemDetailsFragment : BaseFragment(), ShowCollectionItemDeta
 
     override fun getCollectionBaseFromHost(): Collection = host.getCollection()
 
+    /**
+     * Fail-Fast approach for host
+     * */
     override fun onAttach(context: Context?) {
         super.onAttach(context)
         context?.let {
@@ -58,7 +60,7 @@ class ShowCollectionItemDetailsFragment : BaseFragment(), ShowCollectionItemDeta
     }
 
     override fun populateProjectList(projectList: List<LatestProject>) {
-        Log.e("yo PopulateList", ""+projectList.size)
+        Log.e("yo PopulateList", "" + projectList.size)
         adapter.populateProjects(projectList)
     }
 

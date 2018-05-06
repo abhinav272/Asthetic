@@ -2,6 +2,7 @@ package com.abhinav.asthetic.ui.collections
 
 import com.abhinav.asthetic.base.BaseModel
 import com.abhinav.asthetic.network.APIInterface
+import com.abhinav.asthetic.network.pojo.LatestProject
 import com.abhinav.asthetic.network.response.ProjectListResponse
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
@@ -37,8 +38,18 @@ class ShowCollectionItemDetailsModel(private var listener: ShowCollectionItemDet
     }
 
     override fun onNext(value: ProjectListResponse?) {
+        var list = ArrayList<LatestProject>()
         value?.projects?.let {
-            listener.onProjectListLoaded(it)
+            list.addAll(it.filter {
+                !allProjects.contains(it)
+            })
         }
+        listener.onProjectListLoaded(list)
+    }
+
+    private lateinit var allProjects: List<LatestProject>
+
+    fun setInitialList(allProjects: List<LatestProject>) {
+        this.allProjects = allProjects
     }
 }

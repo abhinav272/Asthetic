@@ -24,6 +24,7 @@ class ShowCollectionItemDetailsPresenter(view: ShowCollectionItemDetailsView) : 
 
         getView()?.showCollectionDetails(collectionBase)
 
+        model.setInitialList(allProjects)
         model.fetchProjectListByCollectionId(collectionBase.id)
     }
     override fun setModel() {

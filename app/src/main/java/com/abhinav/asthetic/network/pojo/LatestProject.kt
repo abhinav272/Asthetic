@@ -4,7 +4,6 @@ import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName
 
 
-
 /**
  * Created by abhinav.sharma on 29/12/17.
  */
@@ -53,4 +52,12 @@ class LatestProject {
     @Expose
     var conceivedOn: Int = 0
 
+    override fun equals(other: Any?): Boolean = when (other) {
+        !is LatestProject -> false
+        else -> id == other.id
+    }
+
+    override fun hashCode(): Int {
+        return id
+    }
 }

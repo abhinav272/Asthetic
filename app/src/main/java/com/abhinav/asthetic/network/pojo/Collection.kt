@@ -10,7 +10,6 @@ import java.util.*
  */
 class Collection {
 
-    var height: Int = 400
     @SerializedName("id")
     @Expose
     var id: Int = 0

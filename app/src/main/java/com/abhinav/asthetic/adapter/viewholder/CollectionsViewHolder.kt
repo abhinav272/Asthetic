@@ -17,7 +17,7 @@ class CollectionsViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) 
     fun bind(collection: Collection, listener: (Collection) -> Unit) = with(itemView) {
 
         if (collection.projectCovers != null && !collection.projectCovers!!.isEmpty()) {
-            iv_collection_1.load(collection.projectCovers!![0].url!!) { requestCreator ->
+            iv_collection_1.load(collection.projectCovers!![0].url!!.replace("202", "404")) { requestCreator ->
                 requestCreator.fit().centerCrop()
             }
 

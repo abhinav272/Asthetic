@@ -51,7 +51,15 @@ class ShowCollectionItemDetailsFragment : BaseFragment(), ShowCollectionItemDeta
     private fun initViews() {
         adapter = ProjectsAdapter(this)
         rv_projects.adapter = adapter
-        rv_projects.layoutManager = GridLayoutManager(context, 2)
+        val gridLayoutManager = GridLayoutManager(context, 2)
+        rv_projects.layoutManager = gridLayoutManager
+        gridLayoutManager.spanSizeLookup = object : GridLayoutManager.SpanSizeLookup() {
+            override fun getSpanSize(position: Int): Int = when (adapter.getItemViewType(position)) {
+                adapter.TYPE_HEADER -> 2
+                adapter.TYPE_ITEM -> 1
+                else -> -1
+            }
+        }
     }
 
     override fun showCollectionDetails(collection: Collection) {

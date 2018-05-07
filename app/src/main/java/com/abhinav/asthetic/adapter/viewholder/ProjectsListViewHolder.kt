@@ -6,7 +6,7 @@ import com.abhinav.asthetic.network.pojo.LatestProject
 import com.abhinav.asthetic.utils.load
 import kotlinx.android.synthetic.main.layout_project_single_item.view.*
 
-class ProjectsViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+class ProjectsListViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
     var rootLayout: View = itemView.rootView
 

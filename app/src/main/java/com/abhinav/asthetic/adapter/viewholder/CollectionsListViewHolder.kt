@@ -11,7 +11,7 @@ import kotlinx.android.synthetic.main.layout_collection_single_item.view.*
 /**
  * Created by abhinav.sharma on 08/01/18.
  */
-class CollectionsViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+class CollectionsListViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
     var rootLayout: View = itemView.rootView
 
     fun bind(collection: Collection, listener: (Collection) -> Unit) = with(itemView) {

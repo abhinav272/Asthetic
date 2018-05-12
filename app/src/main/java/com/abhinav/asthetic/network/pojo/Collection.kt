@@ -39,7 +39,7 @@ class Collection {
     var createdOn: Date? = null
     @SerializedName("updated_on")
     @Expose
-    var updatedOn: Int = 0
+    var updatedOn: Date? = null
     @SerializedName("modified_on")
     @Expose
     var modifiedOn: Int = 0

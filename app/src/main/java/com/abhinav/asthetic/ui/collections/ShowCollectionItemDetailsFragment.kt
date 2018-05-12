@@ -65,6 +65,7 @@ class ShowCollectionItemDetailsFragment : BaseFragment(), ShowCollectionItemDeta
     override fun showCollectionDetails(collection: Collection) {
         Log.e("yo ShowCollectionBase", collection.title + collection.latestProjects?.size)
         collection.latestProjects?.let { adapter.rePopulateProjects(it) }
+        adapter.populateCollectionSummary(collection)
     }
 
     override fun populateProjectList(projectList: List<LatestProject>) {

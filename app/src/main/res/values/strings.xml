@@ -7,4 +7,6 @@
     <string name="error_429">Too many requests/ngive some time</string>
     <string name="error_500">Something went wrong at Server</string>
     <string name="error_503">Server overloaded with requests</string>
+    <string name="followers_title">%s Followers</string>
+    <string name="projects_title">%s Projects</string>
 </resources>

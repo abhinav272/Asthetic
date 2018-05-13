@@ -1,5 +1,7 @@
 package com.abhinav.asthetic.adapter
 
+import android.content.Context
+import android.support.constraint.ConstraintLayout
 import android.support.v7.widget.RecyclerView
 import android.view.View
 import android.view.ViewGroup
@@ -10,6 +12,7 @@ import com.abhinav.asthetic.adapter.viewholder.ProjectsListViewHolder
 import com.abhinav.asthetic.network.pojo.Collection
 import com.abhinav.asthetic.network.pojo.LatestProject
 import com.abhinav.asthetic.utils.inflate
+import java.util.*
 
 /**
  * Created by appinventiv on 25/4/18.
@@ -19,11 +22,12 @@ class ProjectsAdapter(private val listener: (LatestProject) -> Unit) : RecyclerV
     private val allProject = ArrayList<LatestProject>()
     private var lastPosition: Int = 0
     private var collection: Collection? = null
+    private var constraint: ConstraintLayout? = null
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder =
             when (viewType) {
                 TYPE_ITEM -> ProjectsListViewHolder(parent.inflate(R.layout.layout_project_single_item))
-                else -> CollectionSummaryViewHolder(parent.inflate(R.layout.layout_collection_details_single_item))
+                else -> CollectionSummaryViewHolder(parent.inflate(R.layout.layout_collection_details_single_item_final))
             }
 
     override fun getItemCount(): Int = allProject.size + 1
@@ -42,10 +46,27 @@ class ProjectsAdapter(private val listener: (LatestProject) -> Unit) : RecyclerV
                 holder.rootLayout.setOnClickListener { listener.invoke(getItem(position)!!) }
             }
             is CollectionSummaryViewHolder -> {
+//                context = holder.rootLayout.context
                 collection?.let { holder.bind(collection!!) }
+                setAnimation(holder.rootLayout, position)
+//                constraint = holder.rootLayout as ConstraintLayout
             }
         }
     }
+
+    private var context: Context? = null
+
+//    private fun showComponents() {
+//        val constraintSet = ConstraintSet()
+//        constraintSet.clone(context, R.layout.layout_collection_details_single_item_final)
+//
+//        val transition = ChangeBounds()
+//        transition.interpolator = AnticipateOvershootInterpolator(1.0f)
+//        transition.duration = 800
+//
+//        TransitionManager.beginDelayedTransition(constraint, transition)
+//        constraintSet.applyTo(constraint)
+//    }
 
     fun populateProjects(allItems: List<LatestProject>) {
         val position = allProject.size
@@ -65,8 +86,11 @@ class ProjectsAdapter(private val listener: (LatestProject) -> Unit) : RecyclerV
     }
 
     private fun setAnimation(viewToAnimate: View, position: Int) {
-        if (position >= lastPosition) {
-            val animation = AnimationUtils.loadAnimation(viewToAnimate.context, R.anim.item_animation_from_bottom)
+        if (position > lastPosition) {
+            val animation = when (position) {
+                0 -> AnimationUtils.loadAnimation(viewToAnimate.context, R.anim.item_animation_from_top)
+                else -> AnimationUtils.loadAnimation(viewToAnimate.context, R.anim.item_animation_from_bottom)
+            }
             viewToAnimate.startAnimation(animation)
             lastPosition = position
         }

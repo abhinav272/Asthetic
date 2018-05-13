@@ -7,7 +7,7 @@ import com.abhinav.asthetic.network.pojo.Collection
 import com.abhinav.asthetic.utils.ResourceUtil
 import com.abhinav.asthetic.utils.getFormatedDate
 import com.abhinav.asthetic.utils.load
-import kotlinx.android.synthetic.main.layout_collection_details_single_item.view.*
+import kotlinx.android.synthetic.main.layout_collection_details_single_item_final.view.*
 
 /**
  * Created by appinventiv on 7/5/18.

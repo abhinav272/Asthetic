@@ -63,18 +63,16 @@ class ShowCollectionItemDetailsFragment : BaseFragment(), ShowCollectionItemDeta
     }
 
     override fun showCollectionDetails(collection: Collection) {
-        Log.e("yo ShowCollectionBase", collection.title + collection.latestProjects?.size)
         collection.latestProjects?.let { adapter.rePopulateProjects(it) }
         adapter.populateCollectionSummary(collection)
     }
 
     override fun populateProjectList(projectList: List<LatestProject>) {
-        Log.e("yo PopulateList", "" + projectList.size)
         adapter.populateProjects(projectList)
     }
 
     override fun invoke(p1: LatestProject) {
-        Log.e("yo", p1.name)
+
     }
 
     override fun onDestroyView() {

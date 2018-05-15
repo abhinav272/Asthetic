@@ -1,4 +1,4 @@
-package com.abhinav.asthetic.ui
+package com.abhinav.asthetic.ui.collections
 
 import android.content.Context
 import android.os.Bundle
@@ -13,7 +13,6 @@ import com.abhinav.asthetic.R
 import com.abhinav.asthetic.adapter.CollectionsAdapter
 import com.abhinav.asthetic.base.BaseFragment
 import com.abhinav.asthetic.network.pojo.Collection
-import com.abhinav.asthetic.ui.collections.CollectionDetailHost
 import com.abhinav.asthetic.utils.recyclerview_utils.LinearInfiniteScrollListner
 import kotlinx.android.synthetic.main.fragment_collection.*
 

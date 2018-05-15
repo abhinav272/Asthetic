@@ -1,4 +1,4 @@
-package com.abhinav.asthetic.ui
+package com.abhinav.asthetic.ui.collections
 
 import com.abhinav.asthetic.base.BaseModel
 import com.abhinav.asthetic.network.APIInterface

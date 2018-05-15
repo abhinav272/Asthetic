@@ -3,7 +3,7 @@ package com.abhinav.asthetic
 import android.os.Bundle
 import com.abhinav.asthetic.base.BaseActivity
 import com.abhinav.asthetic.network.pojo.Collection
-import com.abhinav.asthetic.ui.ShowCollectionFragment
+import com.abhinav.asthetic.ui.collections.ShowCollectionFragment
 import com.abhinav.asthetic.ui.collections.CollectionDetailHost
 import com.abhinav.asthetic.ui.collections.CollectionItemDetailHost
 import com.abhinav.asthetic.ui.collections.ShowCollectionItemDetailsFragment

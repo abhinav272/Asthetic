@@ -71,7 +71,7 @@ class ProjectsAdapter(private val listener: (LatestProject) -> Unit) : RecyclerV
     fun populateProjects(allItems: List<LatestProject>) {
         val position = allProject.size
         allProject.addAll(allItems)
-        notifyItemRangeInserted(position, allItems.size)
+        notifyItemRangeInserted(position + 1, allItems.size)
     }
 
     fun rePopulateProjects(allItems: List<LatestProject>) {
@@ -86,7 +86,7 @@ class ProjectsAdapter(private val listener: (LatestProject) -> Unit) : RecyclerV
     }
 
     private fun setAnimation(viewToAnimate: View, position: Int) {
-        if (position > lastPosition) {
+        if (position >= lastPosition) {
             val animation = when (position) {
                 0 -> AnimationUtils.loadAnimation(viewToAnimate.context, R.anim.item_animation_from_top)
                 else -> AnimationUtils.loadAnimation(viewToAnimate.context, R.anim.item_animation_from_bottom)

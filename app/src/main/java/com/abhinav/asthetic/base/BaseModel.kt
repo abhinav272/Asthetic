@@ -13,6 +13,14 @@ import java.net.UnknownHostException
 /**
  * Created by abhinav.sharma on 28/12/17.
  */
+
+
+/**
+ * Make disposables in here
+ * Also, there should be a common place for disposing the Subscription
+ *
+ * */
+
 abstract class BaseModel<T>(private val listener: BaseModelListener) : NoNetworkHandler, Observer<T> {
 
     override fun onError(e: Throwable?) {

@@ -34,4 +34,9 @@ class ShowCollectionItemDetailsPresenter(view: ShowCollectionItemDetailsView) : 
     override fun onProjectListLoaded(projectList: List<LatestProject>) {
         getView()?.populateProjectList(projectList)
     }
+
+    override fun destroy() {
+        super.destroy()
+        model.destroy()
+    }
 }

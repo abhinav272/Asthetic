@@ -77,4 +77,9 @@ class ShowCollectionItemDetailsFragment : BaseFragment(), ShowCollectionItemDeta
         Log.e("yo", p1.name)
     }
 
+    override fun onDestroyView() {
+        super.onDestroyView()
+        presenter.destroy()
+    }
+
 }

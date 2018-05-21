@@ -2,6 +2,7 @@ package com.abhinav.asthetic.ui.collections
 
 import com.abhinav.asthetic.base.BasePresenter
 import com.abhinav.asthetic.network.pojo.Collection
+import com.abhinav.asthetic.network.pojo.Owner
 
 /**
  * Created by abhinav.sharma on 04/01/18.
@@ -16,6 +17,7 @@ class ShowCollectionPresenter(view: ShowCollectionView) : BasePresenter<ShowColl
     }
 
     override fun initView() {
+        model.fetchCreativesToFollow()
         model.fetchCollections(page)
     }
 
@@ -34,6 +36,10 @@ class ShowCollectionPresenter(view: ShowCollectionView) : BasePresenter<ShowColl
             page++
             model.fetchCollections(page)
         }
+    }
+
+    override fun onCreativesToFollowLoaded(creativesToFollowResponse: List<Owner>?) {
+        getView()?.showCreativesList(creativesToFollowResponse)
     }
 
     override fun onCollectionsLoaded(collections: List<Collection>?) {

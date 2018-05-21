@@ -13,6 +13,7 @@ import com.abhinav.asthetic.R
 import com.abhinav.asthetic.adapter.CollectionsAdapter
 import com.abhinav.asthetic.base.BaseFragment
 import com.abhinav.asthetic.network.pojo.Collection
+import com.abhinav.asthetic.network.pojo.Owner
 import com.abhinav.asthetic.utils.recyclerview_utils.LinearInfiniteScrollListner
 import kotlinx.android.synthetic.main.fragment_collection.*
 
@@ -63,6 +64,10 @@ class ShowCollectionFragment : BaseFragment(), ShowCollectionView, (Collection) 
         recyclerView.layoutAnimation = controller
         recyclerView.adapter.notifyDataSetChanged()
         recyclerView.scheduleLayoutAnimation()
+    }
+
+    override fun showCreativesList(creativesToFollowList: List<Owner>?) {
+
     }
 
     override fun showFooterLoader() {

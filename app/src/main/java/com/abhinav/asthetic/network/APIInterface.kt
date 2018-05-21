@@ -2,6 +2,7 @@ package com.abhinav.asthetic.network
 
 import com.abhinav.asthetic.BuildConfig
 import com.abhinav.asthetic.network.response.CollectionsResponse
+import com.abhinav.asthetic.network.response.CreativesToFollowResponse
 import com.abhinav.asthetic.network.response.ProjectListResponse
 import com.abhinav.asthetic.utils.EpochTimeAdapter
 import com.google.gson.GsonBuilder
@@ -83,5 +84,8 @@ interface APIInterface {
 
     @GET("/v2/collections/{collectionId}/projects")
     fun getAllProjectsByCollectionId(@Path("collectionId") collectionId: Int): Observable<ProjectListResponse>
+
+    @GET("/v2/creativestofollow")
+    fun getCreativesToFollow(): Observable<CreativesToFollowResponse>
 
 }

@@ -71,7 +71,11 @@ class ShowCollectionItemDetailsFragment : BaseFragment(), ShowCollectionItemDeta
     }
 
     override fun invoke(p1: LatestProject) {
+        presenter.onProjectItemSelected(p1)
+    }
 
+    override fun showProjectDetails(project: LatestProject) {
+        host.showProjectDetails(project)
     }
 
     override fun onDestroyView() {

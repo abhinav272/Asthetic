@@ -39,4 +39,8 @@ class ShowCollectionItemDetailsPresenter(view: ShowCollectionItemDetailsView) : 
         super.destroy()
         model.destroy()
     }
+
+    fun onProjectItemSelected(project: LatestProject) {
+        getView()?.showProjectDetails(project)
+    }
 }

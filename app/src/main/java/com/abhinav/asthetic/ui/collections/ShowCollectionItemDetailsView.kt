@@ -12,5 +12,6 @@ interface ShowCollectionItemDetailsView: BaseView {
     fun showCollectionDetails(collection: Collection)
     fun populateProjectList(projectList: List<LatestProject>)
     fun getCollectionBaseFromHost():Collection
+    fun showProjectDetails(project: LatestProject)
 
 }

@@ -9,4 +9,5 @@ import com.abhinav.asthetic.network.pojo.LatestProject
 interface CollectionItemDetailHost {
 
     fun getCollection(): Collection
+    fun showProjectDetails(project: LatestProject)
 }

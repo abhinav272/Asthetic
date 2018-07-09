@@ -9,4 +9,9 @@
     <string name="error_503">Server overloaded with requests</string>
     <string name="followers_title">%s Followers</string>
     <string name="projects_title">%s Projects</string>
+    <string name="very_long_text">Build a Responsive UI with ConstraintLayout\nConstraintLayout allows you to create large and complex layouts with a flat view hierarchy (no nested view groups). It\'s similar to RelativeLayout in that all views are laid out according to relationships between sibling views and the parent layout, but it\'s more flexible than RelativeLayout and easier to use with Android Studio\'s Layout Editor.
+        All the power of ConstraintLayout is available directly from the Layout Editor\'s visual tools, because the layout API and the Layout Editor were specially built for each other. So you can build your layout with ConstraintLayout entirely by drag-and-dropping instead of editing the XML.
+        To define a view\'s position in ConstraintLayout, you must add at least one horizontal and one vertical constraint for the view. Each constraint represents a connection or alignment to another view, the parent layout, or an invisible guideline. Each constraint defines the view\'s position along either the vertical or horizontal axis; so each view must have a minimum of one constraint for each axis, but often more are necessary.
+        When you drop a view into the Layout Editor, it stays where you leave it even if it has no constraints. However, this is only to make editing easier; if a view has no constraints when you run your layout on a device, it is drawn at position [0,0] (the top-left corner).
+        In figure 1, the layout looks good in the editor, but there\'s no vertical constraint on view C. When this layout draws on a device, view C horizontally aligns with the left and right edges of view A, but appears at the top of the screen because it has no vertical constraint.</string>
 </resources>

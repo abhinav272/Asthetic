@@ -10,7 +10,7 @@
         android:layout_width="match_parent"
         android:layout_height="400dp">
 
-        <include layout="@layout/constraint_layout_project_detail_open" />
+        <include layout="@layout/constraint_layout_project_detail_open_sample" />
 
     </android.support.design.widget.AppBarLayout>
 

@@ -6,7 +6,6 @@ import android.support.constraint.ConstraintLayout
 import android.support.constraint.ConstraintSet
 import android.support.design.widget.AppBarLayout
 import android.util.AttributeSet
-import android.util.Log
 import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
@@ -60,8 +59,8 @@ class CollapsingConstraintLayout : ConstraintLayout, AppBarLayout.OnOffsetChange
         if (parent is AppBarLayout) {
             val appBarLayout = parent as AppBarLayout
             appBarLayout.addOnOffsetChangedListener(this)
-            mOpenToolbarSet.clone(context, R.layout.constraint_layout_project_detail_open)
-            mClosedToolbarSet.clone(context, R.layout.constraint_layout_project_detail_closed)
+            mOpenToolbarSet.clone(context, R.layout.constraint_layout_project_detail_open_sample)
+            mClosedToolbarSet.clone(context, R.layout.constraint_layout_project_detail_closed_sample)
 
             mTitle = findViewById(R.id.tv_name)
             mImage = findViewById(R.id.iv_image)

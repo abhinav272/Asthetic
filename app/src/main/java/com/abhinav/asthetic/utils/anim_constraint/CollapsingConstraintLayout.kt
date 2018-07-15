@@ -6,6 +6,7 @@ import android.support.constraint.ConstraintLayout
 import android.support.constraint.ConstraintSet
 import android.support.design.widget.AppBarLayout
 import android.util.AttributeSet
+import android.util.Log
 import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
@@ -65,6 +66,8 @@ class CollapsingConstraintLayout : ConstraintLayout, AppBarLayout.OnOffsetChange
             mTitle = findViewById(R.id.tv_name)
             mImage = findViewById(R.id.iv_image)
             mBackground = findViewById(R.id.iv_background)
+            mTitle.tag = "title"
+            mImage.tag = "image"
 
             showBackgroundAnimator = ObjectAnimator.ofFloat(mBackground, "alpha", 0f, 1f)
             hideBackgroundAnimator = ObjectAnimator.ofFloat(mBackground, "alpha", 1f, 0f)
@@ -89,9 +92,11 @@ class CollapsingConstraintLayout : ConstraintLayout, AppBarLayout.OnOffsetChange
         if (mToolbarOpen && progress > mTransitionThreshold) {
             mClosedToolbarSet.applyTo(this)
             mToolbarOpen = false
+            hideBackgroundAnimator.start()
         } else if (!mToolbarOpen && progress < mTransitionThreshold) {
             mOpenToolbarSet.applyTo(this)
             mToolbarOpen = true
+            showBackgroundAnimator.start()
         }
     }
 

@@ -108,5 +108,8 @@ class ProjectsAdapter(private val listener: (LatestProject) -> Unit) : RecyclerV
     override fun onViewDetachedFromWindow(holder: RecyclerView.ViewHolder?) {
         super.onViewDetachedFromWindow(holder)
         holder?.itemView?.rootView?.clearAnimation()
+        when(holder) {
+            is ProjectsListViewHolder -> holder.onViewDetached()
+        }
     }
 }

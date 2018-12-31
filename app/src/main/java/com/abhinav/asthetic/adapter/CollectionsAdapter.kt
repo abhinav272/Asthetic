@@ -45,6 +45,7 @@ class CollectionsAdapter(private val listener: (Collection) -> Unit, private var
     override fun onViewDetachedFromWindow(holderList: CollectionsListViewHolder?) {
         super.onViewDetachedFromWindow(holderList)
         holderList?.rootLayout!!.clearAnimation()
+        holderList.onViewDetached()
     }
 }
 

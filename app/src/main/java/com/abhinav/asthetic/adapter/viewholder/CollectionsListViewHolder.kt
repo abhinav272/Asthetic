@@ -59,7 +59,9 @@ class CollectionsListViewHolder(itemView: View) : RecyclerView.ViewHolder(itemVi
         if (collection.owners?.isNotEmpty()!! && !collection.owners!![0].displayName.isNullOrBlank()) {
             tv_owner_name.text = collection.owners?.get(0)?.displayName
         } else {
-            tv_owner_name.text = collection.owners?.get(0)?.username + "-username"
+            tv_owner_name.text = collection.owners?.let {
+                it[0].username.plus("-username")
+            }
         }
         if (collection.owners!!.isNotEmpty()) {
             when {
@@ -92,5 +94,9 @@ class CollectionsListViewHolder(itemView: View) : RecyclerView.ViewHolder(itemVi
         }
 
         itemView.setOnClickListener { listener(collection) }
+    }
+
+    fun onViewDetached() {
+        projectCoversImageViewModel.unSubscribe()
     }
 }

@@ -33,13 +33,13 @@ class ShowCollectionItemDetailsModel(private var listener: ShowCollectionItemDet
 
     private var disposable = CompositeDisposable()
 
-    override fun onSubscribe(d: Disposable?) {
+    override fun onSubscribe(d: Disposable) {
         disposable.add(d)
     }
 
-    override fun onNext(value: ProjectListResponse?) {
+    override fun onNext(value: ProjectListResponse) {
         var list = ArrayList<LatestProject>()
-        value?.projects?.let {
+        value.projects?.let {
             list.addAll(it.filter {
                 !allProjects.contains(it)
             })

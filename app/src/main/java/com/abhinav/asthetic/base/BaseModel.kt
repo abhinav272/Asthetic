@@ -22,9 +22,8 @@ import java.net.UnknownHostException
  * */
 
 abstract class BaseModel<T>(private val listener: BaseModelListener) : NoNetworkHandler, Observer<T> {
-
-    override fun onError(e: Throwable?) {
-        e?.let {
+    override fun onError(e: Throwable) {
+        e.let {
             Log.e("Crash", "${e.printStackTrace()}")
             if (it is SocketTimeoutException || it is UnknownHostException)
                 onNetworkError()

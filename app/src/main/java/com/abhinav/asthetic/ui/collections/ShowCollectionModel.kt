@@ -26,15 +26,15 @@ class ShowCollectionModel(private val listener: ShowCollectionModelListener) : B
                 .observeOn(AndroidSchedulers.mainThread())
                 .doOnSubscribe { onSubscribe(it) }
                 .subscribe({ t: CreativesToFollowResponse -> onCreativesFetched(t.creativesToFollow) },
-                        { t: Throwable? -> onError(t) })
+                        { t: Throwable -> onError(t) })
     }
 
     private fun onCreativesFetched(creativesToFollowList: List<Owner>?) {
         listener.onCreativesToFollowLoaded(creativesToFollowList)
     }
 
-    override fun onNext(value: CollectionsResponse?) {
-        value?.let {
+    override fun onNext(value: CollectionsResponse) {
+        value.let {
             listener.onCollectionsLoaded(it.collections)
         }
     }
@@ -52,7 +52,7 @@ class ShowCollectionModel(private val listener: ShowCollectionModelListener) : B
 
     private var disposable = CompositeDisposable()
 
-    override fun onSubscribe(d: Disposable?) {
+    override fun onSubscribe(d: Disposable) {
         disposable.add(d)
     }
 }

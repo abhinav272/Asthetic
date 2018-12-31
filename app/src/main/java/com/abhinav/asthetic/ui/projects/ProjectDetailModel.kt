@@ -29,12 +29,12 @@ class ProjectDetailModel(private val listener: ProjectDetailModelListener) : Bas
 
     private var disposable = CompositeDisposable()
 
-    override fun onSubscribe(d: Disposable?) {
+    override fun onSubscribe(d: Disposable) {
         disposable.add(d)
     }
 
-    override fun onNext(value: ProjectDetailsResponse?) {
-        value?.projectDetail?.let {
+    override fun onNext(value: ProjectDetailsResponse) {
+        value.projectDetail?.let {
             listener.onProjectDetailsFetched(it)
         }
     }

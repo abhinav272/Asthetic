@@ -1,8 +1,12 @@
 package com.abhinav.asthetic.adapter.viewholder
 
+import android.graphics.Bitmap
 import android.support.v7.widget.RecyclerView
 import android.view.View
 import com.abhinav.asthetic.network.pojo.Collection
+import com.abhinav.asthetic.utils.fetcher.ImageViewModel
+import com.abhinav.asthetic.utils.fetcher.data.BitmapResult
+import com.abhinav.asthetic.utils.fetcher.data.ResponseState
 import com.abhinav.asthetic.utils.getFormatedDate
 import com.abhinav.asthetic.utils.load
 import com.abhinav.asthetic.utils.loadRoundedCorner
@@ -13,12 +17,36 @@ import kotlinx.android.synthetic.main.layout_collection_single_item.view.*
  */
 class CollectionsListViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
     var rootLayout: View = itemView.rootView
+    val list = arrayListOf(202, 404)
+    lateinit var projectCoversImageViewModel: ImageViewModel
 
     fun bind(collection: Collection, listener: (Collection) -> Unit) = with(itemView) {
 
         if (collection.projectCovers != null && !collection.projectCovers!!.isEmpty()) {
-            iv_collection_1.load(collection.projectCovers!![0].url!!.replace("202", "404")) { requestCreator ->
-                requestCreator.fit().centerCrop()
+//            iv_collection_1.load(collection.projectCovers!![0].url!!.replace("202", "404")) { requestCreator ->
+//                requestCreator.fit().centerCrop()
+//            }
+
+
+            iv_collection_1.setImageBitmap(null)
+            projectCoversImageViewModel = ImageViewModel("projects", collection.projectCovers!![0].url!!.substringAfterLast("/"))
+            projectCoversImageViewModel.loadImages(list)
+            projectCoversImageViewModel.bitmapResult.observeForever {
+                it?.let {
+                    when (it.state) {
+                        ResponseState.LOADING -> {
+
+                        }
+                        ResponseState.ERROR -> {
+
+                        }
+                        ResponseState.SUCCESS -> {
+                            it.bitmap?.let { bitmap ->
+                                iv_collection_1.setImageBitmap(bitmap)
+                            }
+                        }
+                    }
+                }
             }
 
             tv_collection_label.text = collection.title

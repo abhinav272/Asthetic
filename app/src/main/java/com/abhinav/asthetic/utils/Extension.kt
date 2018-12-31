@@ -23,7 +23,7 @@ fun ViewGroup.inflate(layoutRes: Int): View {
     return LayoutInflater.from(context).inflate(layoutRes, this, false)
 }
 
-val Context.picasso: Picasso get() = Picasso.with(this)
+val Context.picasso: Picasso get() = Picasso.get()
 
 fun ImageView.load(path: String, request: (RequestCreator) -> RequestCreator) {
     request(context.picasso.load(path)).into(this)
